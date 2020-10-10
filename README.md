@@ -3,12 +3,15 @@
 
 ## PC
 
-- Intel Core i7-10700 @ 2.90GHz (Comet Lake)
-- Intel UHD Graphics 630
-- Gigabyte B460M AORUS ELITE 128MB
+- Intel Core i7-10700 @ 2.90GHz
+  - Comet Lake
+  - 8C/16T
+- Gigabyte B460M AORUS ELITE
+  - Intel UHD Graphics 630 128MB
 - Kingston DDR4 32GB(16GB × 2) 2666MHz
 - Samsung SSD 970 EVO 500GB (m.2)
 - Intel Ethernet Connection (12) I219-V
+  - ``https://bitbucket.org/RehabMan/os-x-intel-network/downloads/``
 - Realtek @ Intel High Definition Audio control
 - HID keyboard + HID-compliant mouse
 
