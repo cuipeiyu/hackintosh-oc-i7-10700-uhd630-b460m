@@ -1,7 +1,7 @@
 # hackintosh-oc-i7-10700-uhd630-b460m
  Hackintosh EFI Opencore
 
-## PC
+## 硬件清单
 
 - Intel Core i7-10700 @ 2.90GHz
   - Comet Lake
@@ -15,45 +15,47 @@
 - Realtek @ Intel High Definition Audio control
 - HID keyboard + HID-compliant mouse
 
-## Steps
-- Download ``https://www.python.org/ftp/python/3.8.0/python-3.8.0-amd64.exe`` to ``workspace``
-- Download SSDTTime``(https://github.com/corpnewt/SSDTTime)`` to ``workspace``
-- Download gibMacOS``(https://github.com/corpnewt/gibMacOS)`` to ``workspace``
-- Download ProperTree``(https://github.com/corpnewt/ProperTree)`` to ``workspace``
-- Download ``https://acpica.org/sites/acpica/files/iasl-win-20200528.zip`` and unzip to ``workspace``
-- Download ``http://www.chrysocome.net/downloads/ddrelease64.exe`` to ``workspace/gibMacOS``
+## 步骤
+- 下载 ``https://www.python.org/ftp/python/3.8.0/python-3.8.0-amd64.exe`` 到 ``workspace``
+- 下载 SSDTTime``(https://github.com/corpnewt/SSDTTime)`` 到 ``workspace``
+- 下载 gibMacOS``(https://github.com/corpnewt/gibMacOS)`` 到 ``workspace``
+- 下载 ProperTree``(https://github.com/corpnewt/ProperTree)`` 到 ``workspace``
+- 下载 ``https://acpica.org/sites/acpica/files/iasl-win-20200528.zip`` 并解压到 ``workspace``
+- 下载 ``http://www.chrysocome.net/downloads/ddrelease64.exe`` 到 ``workspace/gibMacOS``
 
 <!--  -->
-- Setup python-3.8
-  - Check ``Add Python 3.8 to PATH`` option
+- 安装 python-3.8
+  - 勾选 ``Add Python 3.8 to PATH``
+
+- 安装 7z
 
 <!--  -->
-- Guide ``https://dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html``
+- OpenCore 手册 ``https://dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html``
 
 <!--  -->
-- Make SSDT
+- 生成 SSDT
 
-  - Copy ``iasl.exe`` to ``workspace/SSDTTime``
+  - 复制 ``iasl.exe`` t到o ``workspace/SSDTTime``
 
-  - Run ``workspace/SSDTTime/SSDTTime.bat``
+  - 运行 ``workspace/SSDTTime/SSDTTime.bat``
 
-  - Select ``Dump DSDT``
+  - 选择 ``Dump DSDT``
 
-  - and ``FakeEC``
+  - 选择 ``FakeEC``
 
-  - and ``AWAC``
+  - 选择 ``AWAC``
 
-  - and ``USB Reset``
+  - 选择 ``USB Reset``
 
-  - The generated file is in ``workspace/SSDTTime/Results``
+  - 文件生成在 ``workspace/SSDTTime/Results`` 目录下
 
 <!--  -->
-- Download image
-  - Run ``workspace/gibMacOS/gibMacOS.bat``
+- 下载恢复镜像
+  - 运行 ``workspace/gibMacOS/gibMacOS.bat``
 
-  - type ``R`` to toggle Recovery-Only
+  - 输入 ``R`` 切换到仅恢复模式
 
-  - Select one ``Full Install`` tag to download image. print like this
+  - 选择一个含 ``Full Install`` 标签的（建议使用最新的版本）输出像这样:
 
     ```
     #######################################################
@@ -72,9 +74,16 @@
     Press [enter] to return...
     ```
 
-  - Copy file path. like this
-
+  - 根据输出内容复制文件路径。像这样:
     ```U:\mac\gibMacOS-master\macOS Downloads\publicrelease\001-51042 - 10.15.7 macOS Catalina\RecoveryHDMetaDmg.pkg```
 
 <!--  -->
-- Setup USB flash disk
+- 插入U盘 （将会清空&格式化U盘）
+  - 复制 ``ddrelease64.exe`` 文件到 ``workspace/gibMacOS/Scripts/`` 目录下
+  - 运行 ``workspace/gibMacOS/MakeInstall.bat``
+  - 根据U盘选择。像这样: ``1O``
+    - ``1``: 指U盘序号
+    - ``O``: 使用 ``OpenCore`` 默认联网下载最新
+  - 根据提示 输入 ``y`` 格式化U盘
+  - 粘贴 ``RecoveryHDMetaDmg.pkg`` 文件路径
+  - 等待完成...
